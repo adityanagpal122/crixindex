@@ -1,0 +1,74 @@
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Home, FileText, Camera } from "lucide-react";
+
+const Navbar = () => (
+  <nav className="flex justify-between p-4 bg-blue-600 text-white">
+    <h1 className="text-xl font-bold">Crick Index</h1>
+    <div className="space-x-4">
+      <Link to="/" className="hover:underline">Home</Link>
+      <Link to="/blogs" className="hover:underline">Blogs</Link>
+      <Link to="/news" className="hover:underline">News</Link>
+      <Link to="/gallery" className="hover:underline">Gallery</Link>
+    </div>
+  </nav>
+);
+
+const HomePage = () => (
+  <div className="p-6 text-center">
+    <h2 className="text-3xl font-bold">Welcome to Crick Index</h2>
+    <p className="mt-2">Your go-to source for cricket news, blogs, and photos.</p>
+  </div>
+);
+
+const BlogsPage = () => (
+  <div className="p-6">
+    <h2 className="text-2xl font-bold">Cricket Blogs</h2>
+    <Card className="mt-4">
+      <CardContent>
+        <h3 className="text-xl font-bold">Top 5 Cricketing Moments</h3>
+        <p>Explore the most memorable moments in cricket history.</p>
+        <Button className="mt-2">Read More</Button>
+      </CardContent>
+    </Card>
+  </div>
+);
+
+const NewsPage = () => (
+  <div className="p-6">
+    <h2 className="text-2xl font-bold">Latest Cricket News</h2>
+    <Card className="mt-4">
+      <CardContent>
+        <h3 className="text-xl font-bold">India vs Australia - Match Review</h3>
+        <p>Get insights into the latest international match.</p>
+        <Button className="mt-2">Read More</Button>
+      </CardContent>
+    </Card>
+  </div>
+);
+
+const GalleryPage = () => (
+  <div className="p-6">
+    <h2 className="text-2xl font-bold">Cricket Photo Gallery</h2>
+    <div className="grid grid-cols-2 gap-4 mt-4">
+      <img src="https://via.placeholder.com/300" alt="Cricket 1" className="rounded-lg" />
+      <img src="https://via.placeholder.com/300" alt="Cricket 2" className="rounded-lg" />
+    </div>
+  </div>
+);
+
+const App = () => (
+  <Router>
+    <Navbar />
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/blogs" element={<BlogsPage />} />
+      <Route path="/news" element={<NewsPage />} />
+      <Route path="/gallery" element={<GalleryPage />} />
+    </Routes>
+  </Router>
+);
+
+export default App;
